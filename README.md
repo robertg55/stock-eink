@@ -15,5 +15,7 @@
 	Chose option: Yes
 	Select Finish, and reboot the Raspberry Pi.
 - Set startup script to run on login
+    Clone repo: git clone https://github.com/robertg55/stock-eink.git
+	add permissions to start script: chmod +x ~/stock-eink/start.sh
 	edit rc.local with: sudo vi /etc/rc.local
 	add to it: sudo ~/stock-eink/start.sh
