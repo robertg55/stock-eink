@@ -34,7 +34,9 @@ def main():
         while (True):
             time_draw.rectangle((0, 0, 250, 122), fill = 255)
             time_draw.text((161, 99), time.strftime('%H:%M:%S'), font = font24, fill = 0)
-            time_draw.text((0, 0), "SPY", font = font24, fill = 0)
+            time_draw.text((0, 0), "SPY", font = font36, fill = 0)
+            time_draw.text((0, 40), "TQQQ", font = font36, fill = 0)
+            time_draw.text((0, 80), "SQQQ", font = font36, fill = 0)
             epd.displayPartial(epd.getbuffer(time_image))
             num = num + 1
             if(num == 10):
