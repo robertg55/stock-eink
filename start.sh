@@ -1,6 +1,5 @@
 HOME_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-arrUSER=(${HOME_DIR//// })
-USER=${arrUSER[1]}
+USER=$(basename $HOME_DIR)
 export PYTHONPATH=$HOME_DIR/stock-eink
 git -C $HOME_DIR/stock-eink reset --hard HEAD
 git -C $HOME_DIR/stock-eink pull
