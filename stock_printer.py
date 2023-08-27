@@ -21,7 +21,7 @@ def main():
         epd.Clear(0xFF)
         picdir = os.path.join(os.path.dirname(__file__), 'pic')
         # Drawing on the image
-        font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
+        font36 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 36)
         font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
         
         # # partial update
@@ -32,18 +32,14 @@ def main():
         epd.displayPartBaseImage(epd.getbuffer(time_image))
         num = 0
         while (True):
-            time_draw.rectangle((120, 80, 220, 105), fill = 255)
-            time_draw.text((120, 80), time.strftime('%H:%M:%S'), font = font24, fill = 0)
+            time_draw.rectangle((0, 0, 250, 122), fill = 255)
+            time_draw.text((161, 99), time.strftime('%H:%M:%S'), font = font24, fill = 0)
+            time_draw.text((0, 0), "SPY", font = font24, fill = 0)
             epd.displayPartial(epd.getbuffer(time_image))
             num = num + 1
             if(num == 10):
                 break
-        
-        logging.info("Clear...")
-        epd.init()
-        epd.Clear(0xFF)
-        
-        logging.info("Goto Sleep...")
+
         epd.sleep()
             
     except IOError as e:
