@@ -31,7 +31,7 @@ class StockTracker(threading.Thread):
             symbol = None
             for value in message.split(","):
                 if '"p":' in value:
-                    price = round(int(value.split(":")[1]), 2)
+                    price = round(float(value.split(":")[1]), 2)
                 if '"s":' in value:
                     symbol = value.split(":")[1][1:-1]
             if price and symbol:
