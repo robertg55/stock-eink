@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import threading
-from finnhub_fetcher import StockTracker
-from screen_draw import ScreenPrinter
+from fetcher import StockTracker
+from drawer import ScreenPrinter
 
 if __name__ == "__main__":
     lock = threading.Lock()
