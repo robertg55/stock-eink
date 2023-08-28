@@ -9,5 +9,5 @@ if __name__ == "__main__":
     data = {"SQQQ": None, "TQQQ": None, "SPY": None}
     t1 = ScreenPrinter(data, lock)
     t2 = StockTracker(data, lock, "cjjmie9r01qorp962ctgcjjmie9r01qorp962cu0")
-    t1.run()
-    t2.run()
+    t1.start()
+    t2.start()
