@@ -42,7 +42,7 @@ class ScreenPrinter(threading.Thread):
                         for symbol, price in self.data.items():
                             if price:
                                 stock_draw.text(
-                                    (0, y_loc), f"{symbol}: {price}", font=font24, fill=0
+                                    (0, y_loc), f"{symbol}: {format(price, '.2f')}", font=font24, fill=0
                                 )
                                 y_loc = y_loc + 40
                         epd.displayPartial(epd.getbuffer(stock_image))

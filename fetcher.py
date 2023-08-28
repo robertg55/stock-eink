@@ -12,9 +12,9 @@ class StockTracker(threading.Thread):
         self.data = data
 
     def run(self):
-        yliveticker.YLiveTicker(on_ticker=self.on_message, ticker_names=[self.data.keys()])
+        yliveticker.YLiveTicker(on_ticker=self.on_message, ticker_names=list(self.data.keys()))
 
-    def on_message(self, message):
+    def on_message(self, _, message):
         try:
             with self.lock:
                 self.data.update({message["id"]: round(message["price"], 2)})
