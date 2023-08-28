@@ -31,7 +31,7 @@ class ScreenPrinter(threading.Thread):
             epd.displayPartBaseImage(epd.getbuffer(time_image))
             lastran = time.time()
             while True:
-                if lastran + 1 < time.time():
+                if lastran + 0.5 < time.time():
                     time_draw.rectangle((0, 0, 250, 122), fill=255)
                     time_draw.text(
                         (161, 99), time.strftime("%H:%M:%S"), font=font24, fill=0
