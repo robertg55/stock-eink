@@ -25,26 +25,27 @@ class ScreenPrinter(threading.Thread):
             picdir = os.path.join(os.path.dirname(__file__), "pic")
             font24 = ImageFont.truetype(os.path.join(picdir, "Font.ttc"), 24)
 
-            time_image = Image.new("1", (epd.height, epd.width), 255)
-            time_draw = ImageDraw.Draw(time_image)
+            stock_image = Image.new("1", (epd.height, epd.width), 255)
+            stock_draw = ImageDraw.Draw(stock_image)
 
-            epd.displayPartBaseImage(epd.getbuffer(time_image))
+            epd.displayPartBaseImage(epd.getbuffer(stock_image))
             lastran = time.time()
             while True:
                 if lastran + 0.3 < time.time():
-                    time_draw.rectangle((0, 0, 250, 122), fill=255)
-                    time_draw.text(
+                    stock_draw.rectangle((0, 0, 250, 122), fill=255)
+                    stock_draw.text(
                         (161, 99), time.strftime("%H:%M:%S"), font=font24, fill=0
                     )
 
                     with self.lock:
                         y_loc = 0
                         for symbol, price in self.data.items():
-                            time_draw.text(
-                                (0, y_loc), f"{symbol}: {price}", font=font24, fill=0
-                            )
-                            y_loc = y_loc + 40
-                        epd.displayPartial(epd.getbuffer(time_image))
+                            if price:
+                                stock_draw.text(
+                                    (0, y_loc), f"{symbol}: {price}", font=font24, fill=0
+                                )
+                                y_loc = y_loc + 40
+                        epd.displayPartial(epd.getbuffer(stock_image))
                     lastran = time.time()
 
         except IOError as e:

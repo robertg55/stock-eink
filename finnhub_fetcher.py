@@ -7,10 +7,11 @@ logging.basicConfig(level=logging.INFO)
 
 
 class StockTracker(threading.Thread):
-    def __init__(self, data, lock, token):
+    def __init__(self, data, symbol, lock, token):
         threading.Thread.__init__(self)
         self.lock = lock
         self.data = data
+        self.symbol = symbol
         self.token = token
 
     def run(self):
@@ -30,7 +31,7 @@ class StockTracker(threading.Thread):
             symbol = None
             for value in message.split(","):
                 if '"p":' in value:
-                    price = value.split(":")[1]
+                    price = round(int(value.split(":")[1]), 2)
                 if '"s":' in value:
                     symbol = value.split(":")[1][1:-1]
             if price and symbol:
@@ -46,5 +47,4 @@ class StockTracker(threading.Thread):
         logging.info("### closed ###")
 
     def on_open(self, ws):
-        for key in self.data:
-            ws.send('{"type":"subscribe","symbol":"%s"}' % key)
+        ws.send('{"type":"subscribe","symbol":"%s"}' % self.symbol)
