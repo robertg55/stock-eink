@@ -14,7 +14,7 @@ class StockTracker(threading.Thread):
         self.token = token
 
     def run(self):
-        websocket.enableTrace(True)
+        websocket.enableTrace(False)
         ws = websocket.WebSocketApp(
             f"wss://ws.finnhub.io?token={self.token}",
             on_message=self.on_message,
