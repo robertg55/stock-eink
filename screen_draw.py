@@ -7,7 +7,7 @@ import time
 from PIL import Image, ImageDraw, ImageFont
 import threading
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 
 class ScreenPrinter(threading.Thread):
