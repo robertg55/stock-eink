@@ -4,4 +4,5 @@ export PYTHONPATH=$HOME_DIR/stock-eink
 git -C $HOME_DIR/stock-eink reset --hard HEAD
 git -C $HOME_DIR/stock-eink pull
 chown -R $USER:$USER $HOME_DIR/stock-eink/
+pip install -r requirements.txt
 python $HOME_DIR/stock-eink/stock_printer.py

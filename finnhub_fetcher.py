@@ -1,6 +1,6 @@
 #https://pypi.org/project/websocket_client/
 import websocket
-import threading   
+import threading
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
