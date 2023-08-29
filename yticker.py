@@ -65,20 +65,20 @@ class YTicker:
         else:
             self.on_ticker(ws, data)
 
-    def on_error(self, ws, error):
+    def on_error(self, _, error, *_):
         if self.on_custom_error is None:
             logging.error(error)
         else:
             self.on_custom_error(error)
 
-    def on_close(self, _, _, _):
+    def on_close(self, *_):
         if self.on_custom_close is None:
             logging.info("### connection is closed ###")
         else:
             self.on_custom_close()
 
-    def on_open(self, ws):
-        def run(*args):
+    def on_open(self, *_):
+        def run(*_):
             self.ws.send(json.dumps(self.symbol_list))
 
         thread.start_new_thread(run, ())
