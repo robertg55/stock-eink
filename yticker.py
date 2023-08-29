@@ -65,7 +65,7 @@ class YTicker:
         else:
             self.on_ticker(ws, data)
 
-    def on_error(self, _, error, *_):
+    def on_error(self, __, error, *_):
         if self.on_custom_error is None:
             logging.error(error)
         else:
