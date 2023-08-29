@@ -1,4 +1,4 @@
-import yliveticker
+from yticker import YTicker
 import threading
 import logging
 
@@ -12,7 +12,7 @@ class StockTracker(threading.Thread):
         self.data = data
 
     def run(self):
-        yliveticker.YLiveTicker(on_ticker=self.on_message, ticker_names=list(self.data.keys()))
+        YTicker(on_ticker=self.on_message, ticker_names=list(self.data.keys()))
 
     def on_message(self, _, message):
         try:
@@ -20,5 +20,3 @@ class StockTracker(threading.Thread):
                 self.data.update({message["id"]: round(message["price"], 2)})
         except Exception as e:
             logging.error(e, exc_info=True)
-
-
