@@ -11,7 +11,11 @@ try:
 except ImportError:
     import _thread as thread
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(filename="logs.txt",
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.INFO)
 
 class YTicker:
     def __init__(
