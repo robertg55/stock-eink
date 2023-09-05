@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     t1 = ScreenPrinter(data, lock)
     for symbol in data.keys():
-        t = StockTracker(data, lock)
+        t = StockTracker(symbol, data, lock)
         t.start()
     t1.start()
 

@@ -11,6 +11,14 @@ try:
 except ImportError:
     import _thread as thread
 
+logging.basicConfig(format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.INFO,
+                    handlers=[
+                        logging.FileHandler("logs.txt", mode='a'),
+                        logging.StreamHandler()
+    ])
+
 
 class YTicker:
     def __init__(
