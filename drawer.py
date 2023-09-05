@@ -7,12 +7,6 @@ import time
 from PIL import Image, ImageDraw, ImageFont
 import threading
 
-logging.basicConfig(filename="logs.txt",
-                    filemode='a',
-                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                    datefmt='%H:%M:%S',
-                    level=logging.INFO)
-
 class ScreenPrinter(threading.Thread):
     def __init__(self, data, lock):
         threading.Thread.__init__(self)

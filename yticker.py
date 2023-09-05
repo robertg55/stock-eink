@@ -11,11 +11,6 @@ try:
 except ImportError:
     import _thread as thread
 
-logging.basicConfig(filename="logs.txt",
-                    filemode='a',
-                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                    datefmt='%H:%M:%S',
-                    level=logging.INFO)
 
 class YTicker:
     def __init__(
@@ -46,7 +41,7 @@ class YTicker:
             on_close=self.on_close,
         )
         self.ws.on_open = self.on_open
-        self.ws.run_forever()
+        self.ws.run_forever(reconnect=1)
 
     def on_message(self, ws, message):
         message_bytes = base64.b64decode(message)
